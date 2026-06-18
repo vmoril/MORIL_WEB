@@ -1,0 +1,24 @@
+{
+  "name": "gcp-always-free-web",
+  "version": "1.0.0",
+  "description": "Web app and database deployed on GCP Always Free tier",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "gcp",
+    "always-free",
+    "express",
+    "sqlite",
+    "vanilla-css"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
