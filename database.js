@@ -21,10 +21,24 @@ async function getDatabaseConnection() {
     CREATE TABLE IF NOT EXISTS guestbook (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
+      email TEXT,
+      company TEXT,
       message TEXT NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
+
+  // Migraciones automáticas por si la base de datos ya existía en producción
+  try {
+    await db.exec('ALTER TABLE guestbook ADD COLUMN email TEXT');
+  } catch (err) {
+    // La columna ya existía, ignoramos el error
+  }
+  try {
+    await db.exec('ALTER TABLE guestbook ADD COLUMN company TEXT');
+  } catch (err) {
+    // La columna ya existía, ignoramos el error
+  }
 
   console.log('Base de datos SQLite inicializada correctamente en:', dbPath);
   return db;
@@ -36,15 +50,20 @@ async function getMessages() {
   return connection.all('SELECT * FROM guestbook ORDER BY created_at DESC LIMIT 50');
 }
 
-// Guardar un nuevo mensaje
-async function saveMessage(name, message) {
+// Guardar un nuevo mensaje / lead
+async function saveMessage(name, message, email = null, company = null) {
   if (!name || !message) {
     throw new Error('El nombre y el mensaje son campos obligatorios.');
   }
   const connection = await getDatabaseConnection();
   return connection.run(
-    'INSERT INTO guestbook (name, message) VALUES (?, ?)',
-    [name.trim(), message.trim()]
+    'INSERT INTO guestbook (name, email, company, message) VALUES (?, ?, ?, ?)',
+    [
+      name.trim(),
+      email ? email.trim() : null,
+      company ? company.trim() : null,
+      message.trim()
+    ]
   );
 }
 

@@ -13,6 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Ruta para el Portal de Gestión GTM
+app.get('/portal', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'portal.html'));
+});
+
 // API Endpoint: Obtener todos los mensajes
 app.get('/api/messages', async (req, res) => {
   try {
@@ -24,15 +29,15 @@ app.get('/api/messages', async (req, res) => {
   }
 });
 
-// API Endpoint: Crear un nuevo mensaje
+// API Endpoint: Crear un nuevo mensaje / lead de consulta
 app.post('/api/messages', async (req, res) => {
-  const { name, message } = req.body;
+  const { name, email, company, message } = req.body;
   if (!name || !message) {
     return res.status(400).json({ success: false, error: 'Nombre y mensaje requeridos.' });
   }
 
   try {
-    await db.saveMessage(name, message);
+    await db.saveMessage(name, message, email, company);
     res.json({ success: true, message: 'Mensaje guardado correctamente.' });
   } catch (error) {
     console.error('Error al guardar mensaje:', error);
