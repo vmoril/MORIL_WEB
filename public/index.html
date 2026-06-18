@@ -7,7 +7,7 @@
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="At Moril Tech, we leverage RevOps and AI-driven solutions to streamline efficiency and accelerate growth across AEC, BIM-GIS, Utilities, AgTech, FinTech, and Retail.">
-  <meta name="keywords" content="Revenue Operations, RevOps, AI business solutions, Business Development, Change Management, Demand Generation, Procurement, Growth, AEC, BIM-GIS">
+  <meta name="keywords" content="Revenue Operations, RevOps, AI business solutions, Business Development, Change Management, Demand Generation, Procurement, Growth, AEC, BIM-GIS, Referrals, Channel Services">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%228%22/><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%23818cf8%22/><stop offset=%22100%25%22 stop-color=%22%2322d3ee%22/></linearGradient></defs></svg>">
   
   <!-- Google Fonts: Outfit & Inter -->
@@ -39,13 +39,24 @@
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#inicio" class="nav-link">Inicio</a>
         <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#sectores" class="nav-link">Sectores</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="#productos" class="nav-link">Productos</a>
+        <a href="#canales" class="nav-link">Canales y Socios</a>
+        
+        <!-- Dropdown "Más" -->
+        <div class="nav-dropdown">
+          <span class="nav-link dropdown-trigger">Más <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 0.25rem;"></i></span>
+          <div class="dropdown-menu">
+            <a href="#mision" class="dropdown-item">Misión y Valores</a>
+            <a href="#venta-cruzada" class="dropdown-item">Cross & Up Selling</a>
+            <a href="#recursos" class="dropdown-item">Recursos y Equipo</a>
+            <a href="#contacto" class="dropdown-item">Contacto</a>
+          </div>
+        </div>
       </nav>
 
       <div class="header-actions">
-        <a href="/portal" id="btn-portal" class="btn" style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-light); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
-          <i class="fa-solid fa-chart-line"></i> Acceso Portal GTM
+        <a href="/portal" id="btn-portal" class="btn" style="background: linear-gradient(135deg, rgba(129, 140, 248, 0.15), rgba(34, 211, 238, 0.15)); border: 1px solid var(--color-secondary); color: var(--color-secondary); padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-smooth);">
+          <i class="fa-solid fa-lock"></i> Área Privada / GTM
         </a>
       </div>
     </div>
@@ -83,7 +94,7 @@
     <!-- Services / Pillars Section -->
     <section id="servicios" class="services-section container">
       <div class="section-header">
-        <h2>Pilares de Servicio</h2>
+        <h2>Servicios e Integración</h2>
         <p>Estrategias integradas para optimizar el rendimiento y acelerar el ciclo de vida de tu negocio.</p>
       </div>
 
@@ -121,6 +132,60 @@
           <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
           <h3>Growth Acceleration</h3>
           <p>Estrategias avanzadas de escalado con automatización por IA, mejorando márgenes y acelerando el valor de vida del cliente (LTV).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="services-section container">
+      <div class="section-header">
+        <h2>Productos e Innovación</h2>
+        <p>Soluciones tecnológicas y de software enfocadas en la optimización de ingresos y distribución.</p>
+      </div>
+
+      <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+        <!-- Producto 1 -->
+        <article class="service-card card" style="border-color: rgba(34, 211, 238, 0.2);">
+          <div class="service-icon" style="background: rgba(34, 211, 238, 0.1);"><i class="fa-solid fa-gears"></i></div>
+          <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <h3 style="margin: 0;">Producto 1: RevOps AI Engine</h3>
+            <span class="badge">Activo</span>
+          </div>
+          <p>Nuestra plataforma middleware propietaria que conecta tu CRM (Salesforce/HubSpot) con algoritmos avanzados de IA para pronosticar fugas de clientes (churn) y recomendar la mejor acción de ventas a tomar en tiempo real.</p>
+        </article>
+
+        <!-- Future Products -->
+        <article class="service-card card" style="border-color: rgba(129, 140, 248, 0.2);">
+          <div class="service-icon" style="background: rgba(129, 140, 248, 0.1); color: var(--color-primary);"><i class="fa-solid fa-forward"></i></div>
+          <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <h3 style="margin: 0;">Productos Futuros</h3>
+            <span class="badge" style="color: var(--color-secondary); background: rgba(34, 211, 238, 0.1); border-color: rgba(34, 211, 238, 0.2);">En Desarrollo</span>
+          </div>
+          <p>Estamos construyendo un diseñador de campañas Go-to-Market automatizado por agentes de inteligencia artificial generativa y un optimizador predictivo de atribución de marketing omnicanal.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Channels, Referrals & Services -->
+    <section id="canales" class="services-section container" style="border-top: 1px solid var(--border-light); padding-top: 6rem;">
+      <div class="section-header">
+        <h2>Canales de Venta & Programas de Referidos</h2>
+        <p>Aceleramos la distribución de software técnico y recompensamos la colaboración estratégica.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Channel Services -->
+        <article class="service-card card">
+          <div class="service-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <h3>Servicios de Canal (Channel Services)</h3>
+          <p>Colaboramos con marcas de software técnico para introducirlas en mercados altamente especializados. Actuamos como un canal de ventas global y soporte dedicado en distribución de licencias complejas.</p>
+        </article>
+
+        <!-- Referrals -->
+        <article class="service-card card">
+          <div class="service-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+          <h3>Programa de Referidos (Referrals)</h3>
+          <p>Recomienda nuestros servicios de consultoría o licenciamiento de software a tus clientes y contactos clave. Ofrecemos márgenes competitivos de comisión y un proceso de seguimiento transparente en cada deal cerrado.</p>
         </article>
       </div>
     </section>
@@ -164,23 +229,56 @@
       </div>
     </section>
 
-    <!-- Mission & Partner Section -->
-    <section class="partner-section container">
+    <!-- Cross-Selling / Up-Selling -->
+    <section id="venta-cruzada" class="partner-section container">
+      <div class="card partner-card" style="background: linear-gradient(135deg, rgba(9,13,22,0.8), rgba(255,255,255,0.02));">
+        <div class="partner-grid">
+          <div class="partner-text">
+            <h2>Estrategias de Cross-Selling & Up-Selling</h2>
+            <p>
+              Diseñamos e implementamos flujos automáticos de venta cruzada y escalado de cuentas basados en telemetría de uso. Identificamos señales tempranas de clientes listos para adquirir módulos avanzados o licencias adicionales, aumentando tu ARR de forma orgánica.
+            </p>
+            <div class="mission-bullets">
+              <div class="bullet-item">
+                <i class="fa-solid fa-circle-check text-gradient"></i>
+                <span>Modelos predictivos que detectan el momento exacto para ofrecer mejoras.</span>
+              </div>
+              <div class="bullet-item">
+                <i class="fa-solid fa-circle-check text-gradient"></i>
+                <span>Campañas automáticas activadas por el uso real de tu plataforma.</span>
+              </div>
+            </div>
+          </div>
+          <div class="partner-visual">
+            <div class="network-circle" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));">
+              <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Resources Section -->
+    <section id="mision" class="partner-section container" style="padding-top: 2rem;">
       <div class="card partner-card">
         <div class="partner-grid">
           <div class="partner-text">
-            <h2>Nuestra Misión</h2>
+            <h2>Nuestra Misión, Visión y Valores</h2>
             <p>
               Establecer relaciones de confianza a largo plazo como tu socio estratégico de RevOps e Inteligencia Artificial. Integramos sistemas y automatizamos tareas críticas para impulsar el rendimiento empresarial de forma sostenible y mensurable.
             </p>
             <div class="mission-bullets">
               <div class="bullet-item">
                 <i class="fa-solid fa-check-double text-gradient"></i>
-                <span>Sincronización total de datos de marketing, ventas y postventa.</span>
+                <span><strong>Misión</strong>: Impulsar el crecimiento escalable mediante la automatización de procesos B2B.</span>
               </div>
               <div class="bullet-item">
                 <i class="fa-solid fa-check-double text-gradient"></i>
-                <span>Optimización del ROI mediante automatizaciones inteligentes por IA.</span>
+                <span><strong>Visión</strong>: Convertirnos en el integrador de RevOps líder para el sector técnico global.</span>
+              </div>
+              <div class="bullet-item">
+                <i class="fa-solid fa-check-double text-gradient"></i>
+                <span><strong>Valores</strong>: Integridad en el manejo de datos, innovación constante y compromiso de socio.</span>
               </div>
             </div>
           </div>
@@ -193,8 +291,52 @@
       </div>
     </section>
 
+    <!-- Resources & Team -->
+    <section id="recursos" class="services-section container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Recursos para tu Equipo</h2>
+          <p>
+            Proveemos guías de Revenue Operations, estimadores de ROI en automatizaciones e integraciones, y plantillas de Go-To-Market descargables para alinear a tu organización.
+          </p>
+          <div class="contact-details-list" style="margin-top: 1rem;">
+            <a href="#" class="btn" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); justify-content: flex-start; text-align: left; padding: 1rem;">
+              <i class="fa-solid fa-file-pdf" style="color: var(--color-error); font-size: 1.5rem; margin-right: 0.5rem;"></i>
+              <div>
+                <strong>RevOps B2B playbook.pdf</strong>
+                <span style="font-size: 0.75rem; color: var(--text-dim);">Guía completa de alineación - 4.2 MB</span>
+              </div>
+            </a>
+            <a href="#" class="btn" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); justify-content: flex-start; text-align: left; padding: 1rem;">
+              <i class="fa-solid fa-file-excel" style="color: var(--color-success); font-size: 1.5rem; margin-right: 0.5rem;"></i>
+              <div>
+                <strong>Calculadora ROI automatizacion.xlsx</strong>
+                <span style="font-size: 0.75rem; color: var(--text-dim);">Estima tus ahorros operativos - 1.8 MB</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <h2>Nuestro Equipo</h2>
+          <p>
+            Contamos con expertos certificados en sistemas CRM líderes, científicos de datos especializados en IA aplicada a negocios, e ingenieros con amplia experiencia en licenciamiento de infraestructura para los sectores AEC y BIM-GIS.
+          </p>
+          <div class="contact-details-list" style="margin-top: 1rem;">
+            <div class="contact-detail-item" style="gap: 1rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-light);">
+              <i class="fa-solid fa-user-tie" style="color: var(--color-secondary);"></i>
+              <div>
+                <strong>Vicente Moril</strong>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Director General & Consultor RevOps Principal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Form Section -->
-    <section id="contacto" class="contact-section container">
+    <section id="contacto" class="contact-section container" style="border-top: 1px solid var(--border-light); padding-top: 6rem;">
       <div class="contact-grid">
         <div class="contact-info">
           <h2>Hablemos de tu negocio</h2>
