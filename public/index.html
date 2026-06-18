@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCP Always Free - Panel de Control & Base de Datos</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Dashboard interactivo para monitorizar una instancia de GCP e2-micro y un libro de visitas persistido en SQLite.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%228%22/><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%23818cf8%22/><stop offset=%22100%25%22 stop-color=%22%2322d3ee%22/></linearGradient></defs></svg>">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glows -->
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cloud"></i></span>
+        <div class="logo-text">
+          <h1>GCP Always Free</h1>
+          <span class="logo-subtitle">Instancia e2-micro en us-west1-a</span>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span id="connection-status">Conectado al servidor</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Grid Layout -->
+    <div class="dashboard-grid">
+      
+      <!-- Left Column: Server Status & Database Specs -->
+      <section class="dashboard-section card telemetry-card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fa-solid fa-chart-line header-icon"></i>
+            <h2>Telemetría de la Instancia</h2>
+          </div>
+          <button id="refresh-telemetry-btn" class="btn-icon" aria-label="Actualizar telemetría">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+        
+        <div class="telemetry-stats">
+          <div class="stat-group">
+            <div class="stat-label">
+              <span>Uso de Memoria RAM</span>
+              <span id="ram-percentage" class="stat-value-badge">0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div id="ram-progress" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="stat-details">
+              <span>Usado: <strong id="ram-used">0 MB</strong></span>
+              <span>Total: <strong id="ram-total">0 MB</strong></span>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <span class="stat-box-label"><i class="fa-solid fa-microchip"></i> CPU VM</span>
+              <span class="stat-box-value" id="cpu-model">Cargando...</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box-label"><i class="fa-solid fa-clock"></i> Tiempo de Actividad</span>
+              <span class="stat-box-value" id="uptime">Cargando...</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box-label"><i class="fa-solid fa-server"></i> Sistema Operativo</span>
+              <span class="stat-box-value" id="os-platform">Cargando...</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-box-label"><i class="fa-solid fa-database"></i> Motor de Datos</span>
+              <span class="stat-box-value" id="db-type">Cargando...</span>
+            </div>
+          </div>
+
+          <div class="info-alert">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>El motor <strong>SQLite</strong> almacena toda la información de forma persistente y local en el archivo <code id="db-path">database.db</code> dentro del disco de arranque gratuito de la VM.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Database Interaction Form & List -->
+      <div class="right-column">
+        <!-- New Message Form -->
+        <section class="dashboard-section card form-card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-pen-nib header-icon"></i>
+              <h2>Firma el Libro de Visitas</h2>
+            </div>
+          </div>
+          
+          <form id="message-form" class="message-form">
+            <div class="input-group">
+              <label for="input-name">Nombre / Alias</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="input-name" required placeholder="Ej. Desarrollador Web" maxlength="40">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="input-message">Mensaje</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-comment input-icon"></i>
+                <textarea id="input-message" required placeholder="Escribe un mensaje para verificar la persistencia de SQLite..." maxlength="250" rows="3"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              <span class="btn-text">Enviar Mensaje</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </section>
+
+        <!-- Messages List -->
+        <section class="dashboard-section card list-card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-list-ul header-icon"></i>
+              <h2>Mensajes Almacenados (<span id="messages-count">0</span>)</h2>
+            </div>
+          </div>
+          
+          <div id="messages-container" class="messages-container">
+            <!-- Loading state -->
+            <div class="loading-state">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              <p>Consultando base de datos SQLite...</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <p>Desplegado en GCP Always Free Tier en <span class="badge">us-west1-a</span></p>
+      <p>Node.js v20+ &bull; SQLite3 &bull; Vanilla CSS</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
